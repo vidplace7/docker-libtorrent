@@ -24,7 +24,7 @@ RUN \
 
 RUN \
     echo "**** clone source ****" && \
-    git clone --recurse-submodules https://github.com/arvidn/libtorrent.git /tmp/libtorrent -b "v${LT_VER}" --depth 1
+    git clone --recurse-submodules https://github.com/arvidn/libtorrent.git /tmp/libtorrent -b "${LT_VER}" --depth 1
 
 # RUN \
 #     echo "**** build libtorrent-rasterbar ****" && \
