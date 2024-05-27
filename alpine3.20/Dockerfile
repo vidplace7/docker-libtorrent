@@ -9,7 +9,7 @@ ARG LT_VER
 
 ENV GIT_SSL_NO_VERIFY=0 \
     BOOST_ROOT="" \
-    BUILD_CONFIG="release cxxstd=14 link=shared crypto=openssl warnings=off toolset=gcc"
+    BUILD_CONFIG="release cxxstd=17 link=shared crypto=openssl warnings=off toolset=gcc"
 
 RUN \
     echo "**** install build-deps ****" && \
