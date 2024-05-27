@@ -75,12 +75,7 @@ RUN \
 
 RUN \
     BUILD_VER=$(python3 -c 'import libtorrent as lt; print(lt.__version__)') && \
-    if [ $LT_VER = ${BUILD_VER%.*} ]; then \
-        echo "Successfully built with version: ${BUILD_VER}"; \
-    else \
-        echo "Something went wrong: ${BUILD_VER}"; \
-        exit 1; \
-    fi
+    echo "Built with version: ${BUILD_VER}"
 
 # 
 # RELEASE

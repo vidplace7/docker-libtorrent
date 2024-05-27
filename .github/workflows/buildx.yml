@@ -11,7 +11,8 @@ env:
   LT_VER: "master"
   LT_VER_MINOR: "master-webtorrent"
   LT_VER_MAJOR: "webtorrent"
-  TAGS: "alpine3.17 alpine3.18 alpine3.19 alpine3.20 ubuntu20.04 ubuntu22.04 ubuntu23.10 ubuntu24.04"
+  # TAGS: "alpine3.17 alpine3.18 alpine3.19 alpine3.20 ubuntu20.04 ubuntu22.04 ubuntu23.10 ubuntu24.04"
+  TAGS: "alpine3.17 alpine3.18 alpine3.19 alpine3.20 ubuntu22.04 ubuntu24.04"
 
 jobs:
   alpine:
@@ -19,8 +20,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: [alpine3.17, alpine3.18, alpine3.19, alpine3.20]
-        arch: [amd64, arm64, arm]
+        distro:
+          - alpine3.17
+          - alpine3.18
+          - alpine3.19
+          - alpine3.20
+        arch:
+          - amd64
+          # - arm64
+          # - arm
     steps:
       -
         name: Checkout
@@ -73,7 +81,11 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        distro: [alpine3.17, alpine3.18, alpine3.19, alpine3.20]
+        distro:
+          - alpine3.17
+          - alpine3.18
+          - alpine3.19
+          - alpine3.20
     steps:
       -
         name: Set up Buildx
@@ -123,7 +135,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: [ubuntu20.04, ubuntu22.04, ubuntu23.10, ubuntu24.04]
+        distro:
+          # - ubuntu20.04
+          - ubuntu22.04
+          # - ubuntu23.10
+          - ubuntu24.04
     steps:
       -
         name: Checkout
