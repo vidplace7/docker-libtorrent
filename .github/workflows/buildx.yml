@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'master'
+      - 'libtorrent-master'
 
 env:
-  IMAGE_NAME: ghcr.io/by275/libtorrent
-  LT_VER: "2.0.10"
-  LT_VER_MINOR: "2.0"
-  LT_VER_MAJOR: "2"
+  IMAGE_NAME: ghcr.io/vidplace7/libtorrent
+  LT_VER: "master"
+  LT_VER_MINOR: "master-webtorrent"
+  LT_VER_MAJOR: "webtorrent"
   TAGS: "alpine3.17 alpine3.18 alpine3.19 alpine3.20 ubuntu20.04 ubuntu22.04 ubuntu23.10 ubuntu24.04"
 
 jobs:
@@ -161,18 +161,18 @@ jobs:
           build-args: |
             LT_VER=${{ env.LT_VER }}
           provenance: false
-      -
-        name: Send Notification
-        uses: sarisia/actions-status-discord@v1
-        if: failure()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          description: |
-            ${{ env.IMAGE_NAME }}:latest-${{ matrix.distro }}
-            ${{ env.IMAGE_NAME }}:${{ env.LT_VER }}-${{ matrix.distro }}
-            ${{ env.IMAGE_NAME }}:${{ env.LT_VER_MINOR }}-${{ matrix.distro }}
-            ${{ env.IMAGE_NAME }}:${{ env.LT_VER_MAJOR }}-${{ matrix.distro }}
+      # -
+      #   name: Send Notification
+      #   uses: sarisia/actions-status-discord@v1
+      #   if: failure()
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      #     status: ${{ job.status }}
+      #     description: |
+      #       ${{ env.IMAGE_NAME }}:latest-${{ matrix.distro }}
+      #       ${{ env.IMAGE_NAME }}:${{ env.LT_VER }}-${{ matrix.distro }}
+      #       ${{ env.IMAGE_NAME }}:${{ env.LT_VER_MINOR }}-${{ matrix.distro }}
+      #       ${{ env.IMAGE_NAME }}:${{ env.LT_VER_MAJOR }}-${{ matrix.distro }}
 
   make-release:
     needs:
@@ -208,13 +208,13 @@ jobs:
           body: Auto-generated release
           draft: true
           prerelease: false
-      -
-        name: Send Notification
-        uses: sarisia/actions-status-discord@v1
-        if: always()
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          status: ${{ job.status }}
-          description: |
-            Image: ${{ env.IMAGE_NAME }}
-            Tags: ${{ env.TAGS }}
+      # -
+      #   name: Send Notification
+      #   uses: sarisia/actions-status-discord@v1
+      #   if: always()
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      #     status: ${{ job.status }}
+      #     description: |
+      #       Image: ${{ env.IMAGE_NAME }}
+      #       Tags: ${{ env.TAGS }}

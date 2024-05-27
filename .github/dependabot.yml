@@ -3,12 +3,13 @@ updates:
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
-    target-branch: "master"
+    target-branch: "libtorrent-master"
     directory: "/"
     schedule:
       interval: "daily"
-  - package-ecosystem: "github-actions"
-    target-branch: "v1.2"
+  # Maintain dependencies for Docker
+  - package-ecosystem: "docker"
+    target-branch: "libtorrent-master"
     directory: "/"
     schedule:
       interval: "daily"

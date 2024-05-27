@@ -23,7 +23,7 @@ Libs are prepared in ```/libtorrent-build/usr/lib/``` so you can copy them to yo
 ARG LT_VER=2.0.6
 ARG ALPINE_VER=3.16
 
-FROM ghcr.io/by275/libtorrent:${LT_VER}-alpine${ALPINE_VER} AS libtorrent
+FROM ghcr.io/vidplace7/libtorrent:${LT_VER}-alpine${ALPINE_VER} AS libtorrent
 FROM alpine:${ALPINE_VER}
 
 # install runtime library

@@ -4,8 +4,8 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: ghcr.io/by275/libtorrent
-  LT_VER: "2.0.10"
+  IMAGE_NAME: ghcr.io/vidplace7/libtorrent
+  LT_VER: "master"
 
 jobs:
   changes:
