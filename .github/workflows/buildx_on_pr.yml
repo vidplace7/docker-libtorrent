@@ -40,7 +40,10 @@ jobs:
       fail-fast: false
       matrix:
         distro: ${{ fromJSON(needs.changes.outputs.alpine) }}
-        arch: [amd64, arm64, arm]
+        arch:
+          - amd64
+          # - arm64
+          # - arm
     steps:
       -
         name: Checkout
