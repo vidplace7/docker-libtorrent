@@ -37,6 +37,7 @@ jobs:
     if: ${{ needs.changes.outputs.alpine != '[]' && needs.changes.outputs.alpine != '' }}
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         distro: ${{ fromJSON(needs.changes.outputs.alpine) }}
         arch: [amd64, arm64, arm]
@@ -122,6 +123,7 @@ jobs:
     if: ${{ needs.changes.outputs.ubuntu != '[]' && needs.changes.outputs.ubuntu != '' }}
     runs-on: ubuntu-22.04
     strategy:
+      fail-fast: false
       matrix:
         distro: ${{ fromJSON(needs.changes.outputs.ubuntu) }}
     steps:
